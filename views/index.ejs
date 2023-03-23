@@ -1,0 +1,23 @@
+<%- include('header') -%>
+<body>
+  ?
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title + '.js' %></p>
+  <input type="text" id="searchInput" /> <button onclick="search">ค้นหา</button>
+  <ul>
+    <% article.forEach(function(data, i, arr){ %>
+    <li><%= data.title %></li>
+    <% }); %>
+  </ul>
+
+  <script>
+    function search() {
+      const val = document.getElementById("searchInput");
+      fetch("http://localhost:3000", {
+        body: {
+          search: val,
+        },
+      });
+    }
+  </script>
+</body>
